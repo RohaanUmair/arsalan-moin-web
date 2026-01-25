@@ -1,129 +1,52 @@
-"use client";
-
-import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { BookOpen } from "lucide-react";
+import { BookOpen, ShoppingCart } from "lucide-react";
 
 export default function Book() {
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const rotateX = useSpring(useTransform(y, [-100, 100], [10, -10]), { stiffness: 200, damping: 20 });
-    const rotateY = useSpring(useTransform(x, [-100, 100], [-10, 10]), { stiffness: 200, damping: 20 });
-
-    function handleMouseMove(event) {
-        const rect = event.currentTarget.getBoundingClientRect();
-        x.set(event.clientX - rect.left - rect.width / 2);
-        y.set(event.clientY - rect.top - rect.height / 2);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-    }
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15, delayChildren: 0.3 },
-        },
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 40 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] },
-        },
-    };
-
     return (
-        <section id="book" className="min-h-[90vh] flex items-center px-6 py-12 relative overflow-hidden">
-            {/* Background accents */}
-            <motion.div
-                className="absolute top-20 left-10 w-40 h-40 bg-theme-accent/5 rounded-full blur-2xl"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 8, repeat: Infinity }}
-            />
-
-            <motion.div
-                initial={{ opacity: 0, y: 80 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-                className="max-w-5xl mx-auto bg-[#eaddcf] rounded-2xl p-8 md:p-16 relative overflow-hidden"
-            >
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-
-                <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
-                    {/* 3D Tilt Book Cover */}
-                    <motion.div
-                        className="relative aspect-[3/4] shadow-2xl cursor-pointer"
-                        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                        onMouseMove={handleMouseMove}
-                        onMouseLeave={handleMouseLeave}
-                        initial={{ opacity: 0, x: -50, rotate: 0 }}
-                        whileInView={{ opacity: 1, x: 0, rotate: 3 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-                        whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
-                    >
-                        <Image
-                            src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&h=800&fit=crop"
-                            alt="The Invisible Work Book Cover"
-                            fill
-                            className="object-cover rounded-sm"
-                        />
-                    </motion.div>
-
-                    <motion.div
-                        className="space-y-6"
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                    >
-                        <motion.div variants={itemVariants} className="flex items-center gap-2">
-                            <motion.div
-                                animate={{ rotate: [0, 10, -10, 0] }}
-                                transition={{ duration: 3, repeat: Infinity }}
-                            >
-                                <BookOpen className="text-theme-accent" size={20} />
-                            </motion.div>
-                            <h3 className="text-sm font-bold tracking-widest text-theme-text/60 uppercase">
-                                The Best Seller
-                            </h3>
-                        </motion.div>
-
-                        <motion.h2 variants={itemVariants} className="text-4xl md:text-6xl font-serif text-theme-text">
+        <section id="book" className="py-20 bg-surface">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex flex-col lg:flex-row items-center gap-12">
+                    {/* Content Left */}
+                    <div className="lg:w-2/3">
+                        <div className="flex items-center gap-2 text-primary font-bold mb-4 uppercase tracking-widest text-sm">
+                            <BookOpen size={20} />
+                            <span>New Release</span>
+                        </div>
+                        <h2 className="text-4xl sm:text-5xl font-bold text-text mb-2">
                             The Invisible Work
-                        </motion.h2>
-
-                        <motion.p variants={itemVariants} className="text-xl italic text-theme-accent">
-                            "A parent's guide to raise a human, not tourist."
-                        </motion.p>
-
-                        <motion.p variants={itemVariants} className="text-theme-text/80 leading-relaxed">
-                            This book is not just a guide; it's a mirror for every parent. Discover the unseen efforts that shape a child's character and future.
-                        </motion.p>
-
-                        <motion.div variants={itemVariants}>
-                            <motion.button
-                                whileHover={{
-                                    scale: 1.05,
-                                    boxShadow: "0 0 30px rgba(140, 107, 93, 0.5)",
-                                }}
-                                whileTap={{ scale: 0.95 }}
-                                className="px-8 py-4 bg-theme-text text-white hover:bg-theme-accent transition-colors text-sm tracking-widest w-full md:w-auto rounded-sm"
+                        </h2>
+                        <h3 className="text-2xl text-accent font-medium mb-6">
+                            A Parent’s Guide to Raise a Human, Not a Tourist
+                        </h3>
+                        <p className="text-text-muted text-lg leading-relaxed mb-8 max-w-2xl">
+                            Arsalan Moin’s book teaches parents how to understand the unseen emotional needs of their children.
+                            It guides parents to raise emotionally intelligent, independent, and empathetic children,
+                            focusing on the invisible work that shapes their character.
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                            <a
+                                href="#"
+                                className="bg-primary hover:bg-black text-white px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 shadow-lg"
                             >
-                                ORDER YOUR COPY
-                            </motion.button>
-                        </motion.div>
-                    </motion.div>
+                                <ShoppingCart size={20} />
+                                Buy eBook
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Book Cover Right */}
+                    <div className="lg:w-1/3">
+                        <div className="relative w-full aspect-[2/3] max-w-[300px] mx-auto rounded-lg overflow-hidden shadow-[20px_20px_60px_-15px_rgba(0,0,0,0.3)] border border-blue-100 rotate-2 hover:rotate-0 transition-transform duration-500">
+                            <div className="absolute inset-0 bg-white flex flex-col items-center justify-center p-6 text-center">
+                                <div className="text-primary font-serif italic text-xl mb-2">The</div>
+                                <div className="text-primary font-bold text-3xl mb-4 leading-none">Invisible Work</div>
+                                <div className="w-12 h-0.5 bg-accent mb-4"></div>
+                                <div className="text-text-muted text-xs uppercase tracking-tighter">Arsalan Moin</div>
+                                <div className="mt-12 text-[10px] text-primary/30">Book Cover Placeholder</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 }

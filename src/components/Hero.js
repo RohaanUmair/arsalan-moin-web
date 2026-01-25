@@ -1,175 +1,112 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Sparkles } from "lucide-react";
-
-// Floating Particle Component
-function FloatingParticle({ delay, duration, x, y, size }) {
-    return (
-        <motion.div
-            className="absolute rounded-full bg-theme-accent/20"
-            style={{ width: size, height: size, left: `${x}%`, top: `${y}%` }}
-            animate={{
-                y: [0, -30, 0],
-                x: [0, 15, 0],
-                opacity: [0.2, 0.5, 0.2],
-                scale: [1, 1.2, 1],
-            }}
-            transition={{
-                duration: duration,
-                delay: delay,
-                repeat: Infinity,
-                ease: "easeInOut",
-            }}
-        />
-    );
-}
-
-// Animated Word Component
-function AnimatedWord({ word, index }) {
-    return (
-        <motion.span
-            className="inline-block mr-[0.25em]"
-            initial={{ opacity: 0, y: 50, rotateX: -90 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{
-                duration: 0.8,
-                delay: 0.5 + index * 0.15,
-                ease: [0.215, 0.61, 0.355, 1],
-            }}
-        >
-            {word}
-        </motion.span>
-    );
-}
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import FadeIn from './ui/FadeIn';
 
 export default function Hero() {
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
+  const containerRef = useRef(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-    const rotateX = useSpring(useTransform(mouseY, [-300, 300], [5, -5]), { stiffness: 100, damping: 30 });
-    const rotateY = useSpring(useTransform(mouseX, [-300, 300], [-5, 5]), { stiffness: 100, damping: 30 });
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
-    function handleMouseMove(event) {
-        const rect = event.currentTarget.getBoundingClientRect();
-        mouseX.set(event.clientX - rect.left - rect.width / 2);
-        mouseY.set(event.clientY - rect.top - rect.height / 2);
-    }
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
-    const particles = [
-        { delay: 0, duration: 8, x: 10, y: 20, size: 8 },
-        { delay: 1, duration: 10, x: 80, y: 30, size: 12 },
-        { delay: 2, duration: 7, x: 60, y: 70, size: 6 },
-        { delay: 0.5, duration: 9, x: 25, y: 80, size: 10 },
-        { delay: 1.5, duration: 11, x: 90, y: 60, size: 8 },
-    ];
+  return (
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#F2F2F2]">
 
-    return (
-        <section className="min-h-[90vh] flex items-center pt-32 px-6 py-12 relative overflow-hidden">
-            {/* Floating Particles */}
-            {particles.map((p, i) => (
-                <FloatingParticle key={i} {...p} />
-            ))}
+      {/* Dynamic Noise Grain */}
+      <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none mix-blend-multiply z-50"></div>
 
-            {/* Animated Gradient Background */}
-            <motion.div
-                className="absolute inset-0 z-[-2]"
-                style={{
-                    background: "radial-gradient(ellipse at 70% 30%, rgba(140, 107, 93, 0.1), transparent 60%)",
-                }}
-                animate={{
-                    background: [
-                        "radial-gradient(ellipse at 70% 30%, rgba(140, 107, 93, 0.1), transparent 60%)",
-                        "radial-gradient(ellipse at 30% 70%, rgba(140, 107, 93, 0.15), transparent 60%)",
-                        "radial-gradient(ellipse at 70% 30%, rgba(140, 107, 93, 0.1), transparent 60%)",
-                    ],
-                }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            />
+      {/* Massive Abstract Background Typography */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <motion.h1
+          style={{ y: y1, x: mousePosition.x * -2 }}
+          className="text-[20vw] font-serif font-bold text-white leading-none tracking-tighter mix-blend-difference opacity-50 blur-sm"
+        >
+          INVISIBLE
+        </motion.h1>
+      </div>
 
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <div className="order-2 md:order-1 space-y-8">
-                    <motion.span
-                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 border border-theme-accent/30 rounded-full text-xs tracking-widest text-theme-accent uppercase"
-                    >
-                        <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-                            <Sparkles size={14} />
-                        </motion.span>
-                        Psychological Treatment
-                    </motion.span>
+      <div className="container-custom relative z-10 px-6 scale-[0.80] origin-center">
+        <div className="flex flex-col items-center justify-center text-center">
 
-                    <h1 className="text-5xl md:text-8xl font-serif leading-[1] text-theme-text">
-                        {["Arsalan"].map((word, i) => (
-                            <AnimatedWord key={i} word={word} index={i} />
-                        ))}
-                        <br />
-                        <motion.span
-                            className="italic text-theme-accent inline-block"
-                            initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
-                            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                            transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
-                        >
-                            Moin
-                        </motion.span>
-                    </h1>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 1.5 }}
-                        className="text-lg md:text-xl text-theme-text-muted max-w-md leading-relaxed"
-                    >
-                        Empowering over 1.6 million followers to understand the depths of human behavior and parenting.
-                    </motion.p>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 1.8 }}
-                        className="flex gap-4 pt-4"
-                    >
-                        <motion.div whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(140, 107, 93, 0.4)" }} whileTap={{ scale: 0.95 }}>
-                            <Link href="#about" className="inline-block px-8 py-4 bg-theme-text text-white hover:bg-theme-accent transition-colors text-sm tracking-widest rounded-sm">
-                                MEET ARSALAN
-                            </Link>
-                        </motion.div>
-                        <motion.div
-                            whileHover={{ scale: 1.05, borderColor: "rgba(74, 59, 50, 1)" }}
-                            whileTap={{ scale: 0.95 }}
-                            className="rounded-sm"
-                        >
-                            <Link href="#book" className="inline-block px-8 py-4 border border-theme-text/20 hover:border-theme-text transition-colors text-sm tracking-widest text-theme-text rounded-sm">
-                                THE BOOK
-                            </Link>
-                        </motion.div>
-                    </motion.div>
-                </div>
-
-                {/* 3D Parallax Hero Image */}
-                <motion.div
-                    className="order-1 md:order-2 relative aspect-[4/5] md:aspect-square bg-theme-surface rounded-sm overflow-hidden group perspective-1000"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
-                    style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                >
-                    <div className="absolute inset-0 bg-theme-accent/5"></div>
-                    <Image
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&crop=face"
-                        alt="Arsalan Moin"
-                        fill
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
-                        priority
-                    />
-                </motion.div>
+          {/* Super Premium Badge */}
+          <FadeIn>
+            <div className="mb-8 flex items-center gap-4 justify-center">
+              <div className="h-[1px] w-12 bg-navy-900"></div>
+              <span className="text-xs font-bold tracking-[0.3em] uppercase text-navy-900">Psychology & Design</span>
+              <div className="h-[1px] w-12 bg-navy-900"></div>
             </div>
-        </section>
-    );
+          </FadeIn>
+
+          {/* Main Title - Split Effect */}
+          <div className="relative mb-10 mix-blend-multiply">
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[12vw] md:text-[8vw] leading-[0.8] font-serif font-medium text-navy-900 tracking-tight"
+              >
+                ARSALAN
+              </motion.h1>
+            </div>
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[12vw] md:text-[8vw] leading-[0.8] font-serif italic font-light text-navy-500 tracking-tight"
+              >
+                MOIN
+              </motion.h1>
+            </div>
+          </div>
+
+          {/* Floating Imagery */}
+          <motion.div
+            style={{ y: y2, x: mousePosition.x * 2 }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] md:w-[400px] md:h-[500px] -z-10 opacity-20 blur-sm"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face"
+              className="w-full h-full object-cover grayscale contrast-125"
+              alt="Arsalan Moin"
+            />
+            <div className="absolute inset-0 bg-gold-400 mix-blend-multiply opacity-20"></div>
+          </motion.div>
+
+          <FadeIn delay={0.4} className="max-w-xl mx-auto backdrop-blur-sm bg-white/30 p-6 rounded-none border-l-2 border-navy-900">
+            <p className="text-lg md:text-xl text-navy-900 font-sans font-medium leading-relaxed text-justify">
+              "Architecture for the invisible. I help parents build the emotional structures that hold their children's future together."
+            </p>
+          </FadeIn>
+
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        animate={{ height: [0, 100, 0], top: [0, 100, 200] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        className="absolute bottom-0 right-10 w-[1px] bg-navy-900 h-24 overflow-hidden hidden md:block"
+      />
+      <div className="absolute bottom-10 right-16 -rotate-90 hidden md:block">
+        <span className="text-xs font-bold tracking-widest uppercase text-navy-900">Scroll</span>
+      </div>
+
+    </section>
+  );
 }
