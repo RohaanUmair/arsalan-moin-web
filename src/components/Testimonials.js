@@ -17,7 +17,7 @@ export default function Testimonials() {
     return (
         <section className="min-h-screen py-20 flex flex-col justify-center bg-[#F2F2F2] overflow-hidden relative border-t border-navy-900/5 cursor-grab active:cursor-grabbing">
 
-            <div className="w-full scale-[0.80] origin-center">
+            <div className="w-full">
                 <div className="container-custom mb-10 px-6">
                     <div className="flex flex-col md:flex-row items-end justify-between gap-6">
                         <div>

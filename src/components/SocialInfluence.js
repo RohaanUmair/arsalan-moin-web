@@ -15,7 +15,7 @@ export default function SocialInfluence() {
 
     return (
         <section ref={containerRef} className="min-h-screen py-20 flex items-center bg-white relative overflow-hidden">
-            <div className="container-custom relative z-10 scale-[0.80] origin-center">
+            <div className="container-custom relative z-10">
 
                 <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
                     {/* Sticky Content Side */}

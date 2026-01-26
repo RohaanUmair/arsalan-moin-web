@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fresh & Light "Airy" Palette */
+  /* Fresh & Light "Airy" Palette - VERY LIGHT Blues */
   --color-navy-50: #f0f9ff;
   /* sky-50 */
   --color-navy-100: #e0f2fe;
@@ -11,19 +11,19 @@
   --color-navy-300: #7dd3fc;
   /* sky-300 */
   --color-navy-400: #38bdf8;
-  /* sky-400 */
+  /* sky-400 - Primary accent */
   --color-navy-500: #0ea5e9;
-  /* sky-500 */
-  --color-navy-600: #0284c7;
-  /* sky-600 */
-  --color-navy-700: #0369a1;
-  /* sky-700 */
-  --color-navy-800: #075985;
-  /* sky-800 - Good for text */
-  --color-navy-900: #0c4a6e;
-  /* sky-900 - Deep text */
-  --color-navy-950: #082f49;
-  /* sky-950 - Darkest text */
+  /* sky-500 - Primary blue */
+  --color-navy-600: #38bdf8;
+  /* Lighter - was sky-600 */
+  --color-navy-700: #0ea5e9;
+  /* Lighter - was sky-700 */
+  --color-navy-800: #0ea5e9;
+  /* Lighter - was sky-800 */
+  --color-navy-900: #0284c7;
+  /* Lighter - was sky-900 */
+  --color-navy-950: #0369a1;
+  /* Lighter - was sky-950 */
 
   /* Clean White/Neutral Backgrounds */
   --color-cream-50: #ffffff;
@@ -108,6 +108,24 @@
 
   /* Background Image Utilities */
   --background-image-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+
+  --animate-float-slow: float-slow 12s ease-in-out infinite;
+
+  @keyframes float-slow {
+
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+      transform: translate(30px, -50px) rotate(2deg);
+    }
+
+    66% {
+      transform: translate(-20px, 20px) rotate(-1deg);
+    }
+  }
 }
 
 /* 
@@ -117,7 +135,26 @@
 
 @layer base {
   body {
-    @apply bg-cream-50 text-navy-900 font-sans;
+    @apply bg-cream-50 text-navy-900 font-sans antialiased relative;
+  }
+
+  /* Global Film Grain / Noise Overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: var(--background-image-noise);
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+  }
+
+  ::selection {
+    @apply bg-gold-500/30 text-navy-900;
   }
 
   h1,
@@ -134,19 +171,53 @@
 @layer utilities {
   .section-padding {
     @apply py-12 md:py-20 lg:py-24;
-    /* Significantly reduced from py-40 */
   }
 
   .container-custom {
-    @apply mx-auto w-full max-w-[1280px] px-6 md:px-10 lg:px-16;
+    @apply mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12;
   }
 
+  /* Ultra-Premium Glassmorphism */
   .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/60 shadow-lg;
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-xl shadow-navy-100/20;
+  }
+
+  .glass-card-dark {
+    @apply bg-navy-900/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px var(--color-navy-200);
+    text-stroke: 1px var(--color-navy-200);
+    color: transparent;
   }
 
   .text-gold-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 to-gold-400;
+    background: linear-gradient(90deg, #d97706, #f59e0b, #d97706);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientShift 8s linear infinite;
+  }
+
+  .text-shine {
+    background: linear-gradient(90deg, #38bdf8, #7dd3fc, #38bdf8);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientShift 8s linear infinite;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
   }
 }
 

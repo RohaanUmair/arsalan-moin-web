@@ -1,10 +1,26 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import FadeIn from './ui/FadeIn';
 
 export default function PersonalJourney() {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    // Move the title block down as user scrolls through the section
+    const titleY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 100, 300, 400]);
+    const smoothTitleY = useSpring(titleY, { stiffness: 100, damping: 30 });
+
     const steps = [
         { year: "Phase I", title: "Observation", desc: "Learning from silence in a noisy world." },
         { year: "Phase II", title: "Empathy", desc: "Understanding pain through shared struggle." },
@@ -12,13 +28,16 @@ export default function PersonalJourney() {
     ];
 
     return (
-        <section className="min-h-screen py-20 flex items-center bg-navy-950 text-white relative">
-            <div className="container-custom relative z-10 scale-[0.80] origin-center">
+        <section ref={containerRef} className="py-32 bg-navy-950 text-white relative overflow-visible">
+            <div className="container-custom relative z-10">
 
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
 
-                    {/* Title Block */}
-                    <div className="lg:w-1/3 sticky top-24">
+                    {/* Title Block - Moves with scroll */}
+                    <motion.div
+                        style={{ y: smoothTitleY }}
+                        className="lg:w-1/3"
+                    >
                         <FadeIn>
                             <h2 className="text-5xl lg:text-7xl font-serif font-bold text-white leading-[0.9] mb-6 tracking-tighter">
                                 The <br /> Path.
@@ -27,11 +46,15 @@ export default function PersonalJourney() {
                                 A timeline defined not by years, but by the depth of understanding acquired through silence.
                             </p>
                         </FadeIn>
-                    </div>
+                    </motion.div>
 
                     {/* Vertical Timeline - Minimalist */}
                     <div className="lg:w-2/3 pl-0 lg:pl-20 border-l border-white/10 relative">
-                        <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-gold-500 to-transparent origin-top scale-y-0 animate-[scaleY_2s_ease-out_forwards]"></div>
+                        {/* Animated Timeline Line */}
+                        <motion.div
+                            style={{ scaleY }}
+                            className="absolute top-0 left-[-1px] w-[2px] h-full bg-gradient-to-b from-gold-400 via-gold-500 to-transparent origin-top z-10"
+                        ></motion.div>
 
                         <div className="flex flex-col gap-32">
                             {steps.map((step, i) => (
@@ -43,8 +66,15 @@ export default function PersonalJourney() {
                                     transition={{ duration: 0.8, delay: i * 0.2 }}
                                     className="relative group"
                                 >
-                                    {/* Circle Node */}
-                                    <div className="absolute top-2 -left-[85px] lg:-left-[85px] w-3 h-3 bg-navy-950 border border-white/30 rounded-full group-hover:bg-gold-500 group-hover:border-gold-500 transition-colors duration-500"></div>
+                                    {/* Circle Node - Activates on view */}
+                                    <motion.div
+                                        initial={{ backgroundColor: "#0b1120", borderColor: "#ffffff33" }}
+                                        whileInView={{ backgroundColor: "#f59e0b", borderColor: "#f59e0b" }}
+                                        viewport={{ once: true, margin: "-50px" }}
+                                        transition={{ duration: 0.5, delay: i * 0.3 }}
+                                        className="absolute top-2 -left-[85px] lg:-left-[85px] w-3 h-3 border rounded-full z-20"
+                                    ></motion.div>
+
                                     <div className="absolute top-3 -left-[80px] lg:-left-[80px] w-20 h-[1px] bg-white/10 group-hover:bg-gold-500/50 transition-colors duration-500"></div>
 
                                     <span className="text-xs font-bold text-gold-500 uppercase tracking-[0.3em] block mb-4">{step.year}</span>

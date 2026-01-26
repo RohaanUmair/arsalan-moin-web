@@ -8,13 +8,17 @@ import PersonalJourney from '@/components/PersonalJourney';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 function LoadingScreen() {
     return (
-        <div className="fixed inset-0 bg-blue-50 flex items-center justify-center z-50">
-            <div className="bg-gradient-blue p-1 rounded-full animate-pulse-glow">
-                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-blue-600 font-bold text-xl">
-                    AM
+        <div className="fixed inset-0 bg-cream-50 flex items-center justify-center z-[100]">
+            <div className="relative">
+                <div className="w-24 h-24 border-2 border-navy-100 rounded-full animate-ping opacity-20"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-2xl font-serif font-bold text-navy-900 tracking-widest animate-pulse">
+                        AM
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,7 +36,8 @@ export default function Home() {
 
     return (
         <>
-            <main className="relative z-10 bg-white mb-[80vh] shadow-2xl">
+            <Navbar />
+            <main className="relative z-10 bg-white shadow-2xl overflow-hidden">
                 <Hero />
                 <BookSection />
                 <SocialInfluence />

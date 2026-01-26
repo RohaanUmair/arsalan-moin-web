@@ -6,7 +6,7 @@ import FadeIn from './ui/FadeIn';
 export default function CTA() {
     return (
         <section className="min-h-screen py-20 flex items-center justify-center bg-gradient-to-br from-navy-50 to-white overflow-hidden relative border-t border-navy-100">
-            <div className="container-custom max-w-4xl mx-auto text-center relative z-10 scale-[0.80] origin-center">
+            <div className="container-custom max-w-4xl mx-auto text-center relative z-10">
                 <FadeIn>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-navy-900 mb-6 tracking-tight leading-none">
                         Start the <span className="italic text-navy-500">Invisible Work</span>

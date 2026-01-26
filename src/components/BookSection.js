@@ -26,14 +26,17 @@ export default function BookSection() {
                 </motion.div>
             </div>
 
-            <div className="container-custom relative z-10 scale-[0.80] origin-center">
+            <div className="container-custom relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
                     {/* 3D Book Presentation */}
-                    <div className="w-full lg:w-1/2 flex justify-center perspective-1000">
+                    <div className="w-full lg:w-1/2 flex justify-center perspective-1000 relative">
+                        {/* Glow Behind */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold-400/20 blur-[100px] rounded-full pointer-events-none"></div>
+
                         <motion.div
                             style={{ rotateY: rotate, scale }}
-                            className="relative z-10 w-[300px] md:w-[450px] aspect-[2/3] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-navy-800"
+                            className="relative z-10 w-[300px] md:w-[450px] aspect-[2/3] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-navy-800 rounded-sm overflow-hidden border-r-4 border-white/5"
                         >
                             <img
                                 src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=450&h=675&fit=crop"
@@ -41,18 +44,19 @@ export default function BookSection() {
                                 className="w-full h-full object-cover"
                             />
 
-                            {/* Gloss / Reflection */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 z-20 pointer-events-none"></div>
+                            {/* Premium Gloss / Reflection */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 z-20 pointer-events-none mix-blend-overlay"></div>
+                            <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-black/20 to-transparent pointer-events-none opacity-50"></div>
                         </motion.div>
 
-                        {/* Floating Elements */}
+                        {/* Floating Elements - Glass Card Upgrade */}
                         <motion.div
-                            animate={{ y: [0, -20, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-1/2 -right-10 bg-white text-navy-900 p-6 max-w-[200px] shadow-2xl z-20 hidden md:block"
+                            animate={{ y: [0, -15, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute top-1/2 -right-8 glass-card p-6 max-w-[220px] rounded-xl z-20 hidden md:block border-l-4 border-gold-400"
                         >
-                            <Book className="w-8 h-8 mb-4 text-gold-500" />
-                            <p className="font-serif italic text-lg leading-tight">"A masterpiece of emotional intelligence."</p>
+                            <Book className="w-6 h-6 mb-3 text-gold-500" />
+                            <p className="font-serif italic text-lg leading-tight text-navy-900">"A masterpiece of emotional intelligence."</p>
                         </motion.div>
                     </div>
 
@@ -64,9 +68,9 @@ export default function BookSection() {
                                 <span className="text-gold-500 font-bold tracking-widest uppercase text-xs">Best Seller</span>
                             </div>
 
-                            <h2 className="text-6xl md:text-7xl font-serif font-medium leading-[0.9]">
+                            <h2 className="text-6xl md:text-7xl font-serif font-medium leading-[0.9] text-white">
                                 Raise a Human, <br />
-                                <span className="italic text-white/50">Not a Tourist.</span>
+                                <span className="italic text-white/70">Not a Tourist.</span>
                             </h2>
 
                             <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
