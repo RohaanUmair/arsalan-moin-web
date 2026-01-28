@@ -10,6 +10,9 @@ import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 
+import Philosophy from '@/components/Philosophy';
+import Services from '@/components/Services';
+
 function LoadingScreen() {
     return (
         <div className="fixed inset-0 bg-cream-50 flex items-center justify-center z-[100]">
@@ -40,8 +43,10 @@ export default function Home() {
             <main className="relative z-10 bg-white shadow-2xl overflow-hidden">
                 <Hero />
                 <BookSection />
+                <Philosophy />
                 <SocialInfluence />
                 <PersonalJourney />
+                <Services />
                 <Testimonials />
                 <CTA />
             </main>

@@ -23,7 +23,7 @@ export default function Footer() {
 
                 <div className="relative z-10 w-full flex justify-between items-start">
                     <div>
-                        <h3 className="text-4xl md:text-6xl font-serif font-bold mb-6">Let's Talk.</h3>
+                        <h3 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-gold-500">Let's Talk.</h3>
                         <div className="flex flex-col gap-2 text-white/60 text-lg">
                             <a href="mailto:hello@arsalanmoin.com" className="hover:text-gold-400 transition-colors">hello@arsalanmoin.com</a>
                             <a href="#" className="hover:text-gold-400 transition-colors">+1 (555) 000-0000</a>
