@@ -75,11 +75,11 @@ export default function BookSection() {
 
                             <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
                                 <div>
-                                    <h4 className="text-2xl font-bold mb-2">300+</h4>
+                                    <h4 className="text-2xl font-bold text-white mb-2">300+</h4>
                                     <p className="text-white/50 text-sm uppercase tracking-wider">Pages of insight</p>
                                 </div>
                                 <div>
-                                    <h4 className="text-2xl font-bold mb-2">4.9/5</h4>
+                                    <h4 className="text-2xl font-bold text-white mb-2">4.9/5</h4>
                                     <p className="text-white/50 text-sm uppercase tracking-wider">Reader Rating</p>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ export default function BookSection() {
                             </p>
 
                             <div className="flex flex-wrap gap-6 pt-8">
-                                <Button variant="outline" href="#buy" className="text-cream-50 border-cream-200/20 hover:bg-cream-200/5">
+                                <Button variant="outline" href="#buy" className="text-cream-50 border-cream-200/20 hover:bg-cream-200/5 hover:text-black">
                                     Purchase Copy
                                 </Button>
                                 <button className="text-cream-200/60 hover:text-cream-50 transition-colors flex items-center gap-3 group uppercase tracking-widest text-xs font-bold">
