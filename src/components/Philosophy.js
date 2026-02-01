@@ -28,7 +28,7 @@ export default function Philosophy() {
                     // Male figure in vast nature, contemplative, full body
                     src="https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?q=80&w=1927&auto=format&fit=crop"
                     alt="Philosophy"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-center grayscale-[0.5]"
                 />
             </motion.div>
 
@@ -45,7 +45,7 @@ export default function Philosophy() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="text-3xl md:text-5xl font-serif text-white leading-tight font-medium drop-shadow-xl"
+                    className="text-3xl md:text-5xl font-serif text-cream-50 leading-tight font-medium"
                 >
                     "Silence is the loudest sound."
                 </motion.h3>

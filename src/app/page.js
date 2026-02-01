@@ -40,7 +40,7 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            <main className="relative z-10 bg-white shadow-2xl overflow-hidden">
+            <main className="relative z-10 bg-cream-50 overflow-hidden">
                 <Hero />
                 <BookSection />
                 <Philosophy />

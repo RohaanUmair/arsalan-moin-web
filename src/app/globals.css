@@ -1,43 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fresh & Light "Airy" Palette - VERY LIGHT Blues */
-  --color-navy-50: #f0f9ff;
-  /* sky-50 */
-  --color-navy-100: #e0f2fe;
-  /* sky-100 */
-  --color-navy-200: #bae6fd;
-  /* sky-200 */
-  --color-navy-300: #7dd3fc;
-  /* sky-300 */
-  --color-navy-400: #38bdf8;
-  /* sky-400 - Primary accent */
-  --color-navy-500: #0ea5e9;
-  /* sky-500 - Primary blue */
-  --color-navy-600: #38bdf8;
-  /* Lighter - was sky-600 */
-  --color-navy-700: #0ea5e9;
-  /* Lighter - was sky-700 */
-  --color-navy-800: #0ea5e9;
-  /* Lighter - was sky-800 */
-  --color-navy-900: #0284c7;
-  /* Lighter - was sky-900 */
-  --color-navy-950: #0369a1;
-  /* Lighter - was sky-950 */
+  /* Mature & Professional Palette - Low Contrast Neutrals */
+  --color-navy-50: #fcfcfc;
+  --color-navy-100: #f5f5f5;
+  --color-navy-200: #e5e5e5;
+  --color-navy-300: #d4d4d4;
+  --color-navy-400: #a3a3a3;
+  --color-navy-500: #737373;
+  --color-navy-600: #525252;
+  --color-navy-700: #404040;
+  --color-navy-800: #262626;
+  /* Charcoal */
+  --color-navy-900: #171717;
+  /* Dark Charcoal */
+  --color-navy-950: #0a0a0a;
 
-  /* Clean White/Neutral Backgrounds */
-  --color-cream-50: #ffffff;
-  --color-cream-100: #f8fafc;
-  /* slate-50 */
-  --color-cream-200: #f1f5f9;
-  /* slate-100 */
+  /* Neutrals / Off-whites */
+  --color-cream-50: #fafaf9;
+  /* Warm Stone Off-white */
+  --color-cream-100: #f5f5f4;
+  --color-cream-200: #e7e5e4;
 
-  /* Soft Gold/Sand Accents (less aggressive) */
-  --color-gold-400: #fbbf24;
-  --color-gold-500: #f59e0b;
-  --color-gold-600: #d97706;
+  /* Muted Accents - Taupe / Bronze */
+  --color-gold-400: #a8a29e;
+  /* Stone / Taupe */
+  --color-gold-500: #78716c;
+  /* Warm Gray-Brown */
+  --color-gold-600: #57534e;
 
-  /* Typography - Linking to CSS variables from Next.js font loader */
+  /* Typography */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
@@ -64,11 +56,11 @@
 
     0%,
     100% {
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 20px rgba(115, 115, 115, 0.2);
     }
 
     50% {
-      box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+      box-shadow: 0 0 40px rgba(115, 115, 115, 0.4);
     }
   }
 
@@ -128,17 +120,11 @@
   }
 }
 
-/* 
-  In Tailwind v4, we can simply apply the classes. 
-  Using @apply in the :root or body directly can strictly rely on the theme defined above.
-*/
-
 @layer base {
   body {
-    @apply bg-cream-50 text-navy-900 font-sans antialiased relative;
+    @apply bg-cream-50 text-navy-800 font-sans antialiased relative;
   }
 
-  /* Global Film Grain / Noise Overlay */
   body::after {
     content: "";
     position: fixed;
@@ -154,7 +140,7 @@
   }
 
   ::selection {
-    @apply bg-gold-500/30 text-navy-900;
+    @apply bg-navy-200 text-navy-900;
   }
 
   h1,
@@ -163,11 +149,10 @@
   h4,
   h5,
   h6 {
-    @apply font-serif tracking-tight text-navy-950;
+    @apply font-serif tracking-tight text-navy-900;
   }
 }
 
-/* Premium Utilities */
 @layer utilities {
   .section-padding {
     @apply py-12 md:py-20 lg:py-24;
@@ -177,51 +162,29 @@
     @apply mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12;
   }
 
-  /* Ultra-Premium Glassmorphism */
   .glass-card {
-    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-xl shadow-navy-100/20;
+    @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-lg shadow-black/5;
   }
 
   .glass-card-dark {
-    @apply bg-navy-900/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-black/40 backdrop-blur-xl border border-white/5 shadow-2xl;
   }
 
   .text-stroke {
-    -webkit-text-stroke: 1px var(--color-navy-200);
-    text-stroke: 1px var(--color-navy-200);
+    -webkit-text-stroke: 1px var(--color-navy-300);
+    text-stroke: 1px var(--color-navy-300);
     color: transparent;
   }
 
   .text-gold-gradient {
-    background: linear-gradient(90deg, #d97706, #f59e0b, #d97706);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradientShift 8s linear infinite;
+    @apply text-gold-500;
   }
 
   .text-shine {
-    background: linear-gradient(90deg, #38bdf8, #7dd3fc, #38bdf8);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradientShift 8s linear infinite;
+    @apply text-navy-400;
   }
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  100% {
-    background-position: 200% 50%;
-  }
-}
-
-/* Base Styles */
 html {
   scroll-behavior: smooth;
 }
@@ -231,7 +194,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth Scroll overrides */
 html.lenis {
   height: auto;
 }
@@ -240,14 +202,6 @@ html.lenis {
   scroll-behavior: auto;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
 .lenis.lenis-stopped {
   overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
 }

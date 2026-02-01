@@ -23,32 +23,32 @@ export default function Footer() {
 
                 <div className="relative z-10 w-full flex justify-between items-start">
                     <div>
-                        <h3 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-gold-500">Let's Talk.</h3>
-                        <div className="flex flex-col gap-2 text-white/60 text-lg">
-                            <a href="mailto:hello@arsalanmoin.com" className="hover:text-gold-400 transition-colors">hello@arsalanmoin.com</a>
-                            <a href="#" className="hover:text-gold-400 transition-colors">+1 (555) 000-0000</a>
+                        <h3 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-navy-200">Let's Talk.</h3>
+                        <div className="flex flex-col gap-2 text-navy-400 text-lg">
+                            <a href="mailto:hello@arsalanmoin.com" className="hover:text-navy-200 transition-colors">hello@arsalanmoin.com</a>
+                            <a href="#" className="hover:text-navy-200 transition-colors">+1 (555) 000-0000</a>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-12 text-right">
                         <div className="flex flex-col gap-4">
-                            <span className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-2">Socials</span>
-                            <a href="#" className="hover:text-gold-400 transition-colors">Instagram</a>
-                            <a href="#" className="hover:text-gold-400 transition-colors">Twitter</a>
-                            <a href="#" className="hover:text-gold-400 transition-colors">YouTube</a>
+                            <span className="text-xs font-bold uppercase tracking-widest text-navy-500 mb-2">Socials</span>
+                            <a href="#" className="hover:text-navy-200 transition-colors">Instagram</a>
+                            <a href="#" className="hover:text-navy-200 transition-colors">Twitter</a>
+                            <a href="#" className="hover:text-navy-200 transition-colors">YouTube</a>
                         </div>
                         <div className="flex flex-col gap-4">
-                            <span className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-2">Menu</span>
-                            <a href="#" className="hover:text-gold-400 transition-colors">Home</a>
-                            <a href="#book" className="hover:text-gold-400 transition-colors">The Book</a>
-                            <a href="#about" className="hover:text-gold-400 transition-colors">About</a>
+                            <span className="text-xs font-bold uppercase tracking-widest text-navy-500 mb-2">Menu</span>
+                            <a href="#" className="hover:text-navy-200 transition-colors">Home</a>
+                            <a href="#book" className="hover:text-navy-200 transition-colors">The Book</a>
+                            <a href="#about" className="hover:text-navy-200 transition-colors">About</a>
                         </div>
                     </div>
                 </div>
 
-                <div className="relative z-10 w-full border-t border-white/10 pt-8 flex justify-between items-end">
+                <div className="relative z-10 w-full border-t border-white/5 pt-8 flex justify-between items-end">
                     <div>
-                        <span className="block text-[10vw] leading-[0.8] font-serif font-bold tracking-tighter mix-blend-overlay opacity-50">ARSALAN</span>
+                        <span className="block text-[10vw] leading-[0.8] font-serif font-bold tracking-tighter mix-blend-overlay opacity-20">ARSALAN</span>
                     </div>
                     <p className="text-xs text-white/40 mb-4 hidden md:block">
                         © {currentYear} Arsalan Moin. <br /> All rights reserved.

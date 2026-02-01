@@ -20,7 +20,7 @@ export default function Services() {
                     // Male professional model, energetic/speaking stance, full body
                     src="https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=1887&auto=format&fit=crop"
                     alt="Start the Invisible Work"
-                    className="w-full h-full object-cover object-center transition-transform duration-[2s] group-hover:scale-105"
+                    className="w-full h-full object-cover object-center transition-transform duration-[2s] group-hover:scale-105 grayscale-[0.4]"
                 />
             </div>
 
@@ -29,20 +29,20 @@ export default function Services() {
 
                 <div className="max-w-2xl">
                     <FadeIn>
-                        <p className="text-gold-400 font-bold tracking-widest uppercase text-sm mb-4">Work with Arsalan</p>
+                        <p className="text-navy-400 font-bold tracking-widest uppercase text-sm mb-4">Work with Arsalan</p>
                     </FadeIn>
                     <motion.h2
                         initial={{ y: 50, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         viewport={{ once: true }}
-                        className="text-5xl md:text-7xl font-serif text-white font-medium tracking-tight mb-2"
+                        className="text-5xl md:text-7xl font-serif text-cream-50 font-medium tracking-tight mb-2"
                     >
                         Speaking & <br /> Consulting
                     </motion.h2>
                 </div>
 
                 <div className="flex gap-4">
-                    <button className="px-8 py-4 bg-white text-navy-900 font-bold rounded-full hover:bg-gold-400 transition-colors flex items-center gap-2">
+                    <button className="px-8 py-4 bg-cream-50 text-navy-900 font-bold rounded-full hover:bg-navy-200 transition-colors flex items-center gap-2">
                         Book for Event <ArrowUpRight className="w-4 h-4" />
                     </button>
                 </div>

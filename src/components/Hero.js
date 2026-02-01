@@ -26,24 +26,22 @@ export default function Hero() {
   return (
     <section ref={containerRef} className="relative h-screen w-full flex items-end justify-start overflow-hidden bg-navy-900">
 
-      {/* FULL SCREEN BACKGROUND IMAGE - Male Model Full Body */}
+      {/* FULL SCREEN BACKGROUND IMAGE */}
       <motion.div
         style={{ scale: 1.05, y: yBg, x: mousePosition.x }}
         className="absolute inset-0 z-0"
       >
         <div className="absolute inset-0 bg-navy-900/10 z-10 mix-blend-multiply"></div>
-        {/* Subtle gradient at bottom only to make text readable */}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent z-10 opacity-80"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/40 to-transparent z-10"></div>
 
         <img
-          // Male model, premium editorial feel, full body/3-4 shot
           src="https://images.unsplash.com/photo-1480429370139-e0132c086e2a?q=80&w=1888&auto=format&fit=crop"
-          className="w-full h-full object-cover object-top filter contrast-[1.05]"
+          className="w-full h-full object-cover object-top opacity-60 filter grayscale-[0.6]"
           alt="Arsalan Moin"
         />
       </motion.div>
 
-      {/* TEXT CONTENT - Bottom Left Aligned */}
+      {/* TEXT CONTENT */}
       <motion.div
         style={{ opacity: opacityText }}
         className="relative z-30 container-custom px-6 pb-12 lg:pb-20 w-full"
@@ -51,24 +49,24 @@ export default function Hero() {
         <div className="max-w-4xl">
           <FadeIn>
             <div className="flex items-center gap-4 mb-4">
-              <div className="h-[1px] w-12 bg-gold-400"></div>
-              <span className="text-gold-400 font-bold tracking-[0.3em] uppercase text-xs">Psychology & Design</span>
+              <div className="h-[1px] w-12 bg-navy-500/30"></div>
+              <span className="text-navy-500 font-bold tracking-[0.3em] uppercase text-xs">Psychology & Design</span>
             </div>
           </FadeIn>
 
           <div className="overflow-hidden">
             <motion.h1
-              initial={{ y: 100 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[10vw] lg:text-[7vw] leading-[0.9] font-serif font-medium text-white tracking-tight mb-6 drop-shadow-lg"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.2 }}
+              className="text-[10vw] lg:text-[7vw] leading-[0.9] font-serif font-medium text-navy-100 tracking-tight mb-6"
             >
               ARSALAN MOIN
             </motion.h1>
           </div>
 
-          <FadeIn delay={0.3} className="max-w-lg">
-            <p className="text-lg md:text-xl text-white/90 font-sans font-light leading-relaxed border-l-2 border-gold-500/50 pl-6 drop-shadow-md">
+          <FadeIn delay={0.4} className="max-w-lg">
+            <p className="text-lg md:text-xl text-navy-400 font-sans font-light leading-relaxed border-l-2 border-navy-500/20 pl-6">
               "Architecture for the invisible. Building the emotional structures of the future."
             </p>
           </FadeIn>

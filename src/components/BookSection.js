@@ -17,7 +17,7 @@ export default function BookSection() {
     const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
 
     return (
-        <section ref={containerRef} className="min-h-screen py-20 flex items-center bg-navy-900 text-white relative overflow-hidden">
+        <section ref={containerRef} className="min-h-screen py-20 flex items-center bg-navy-900 text-cream-100 relative overflow-hidden">
 
             {/* Marquee Background */}
             <div className="absolute top-10 left-0 w-full overflow-hidden opacity-5 pointer-events-none">
@@ -31,8 +31,8 @@ export default function BookSection() {
 
                     {/* 3D Book Presentation */}
                     <div className="w-full lg:w-1/2 flex justify-center perspective-1000 relative">
-                        {/* Glow Behind */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold-400/20 blur-[100px] rounded-full pointer-events-none"></div>
+                        {/* Static Subtle Shadow - No Glow */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-black/5 blur-[80px] rounded-full pointer-events-none"></div>
 
                         <motion.div
                             style={{ rotateY: rotate, scale }}
@@ -51,12 +51,12 @@ export default function BookSection() {
 
                         {/* Floating Elements - Glass Card Upgrade */}
                         <motion.div
-                            animate={{ y: [0, -15, 0] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-1/2 -right-8 glass-card p-6 max-w-[220px] rounded-xl z-20 hidden md:block border-l-4 border-gold-400"
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute top-1/2 -right-8 glass-card p-6 max-w-[220px] rounded-sm z-20 hidden md:block border-l-2 border-gold-400"
                         >
-                            <Book className="w-6 h-6 mb-3 text-gold-500" />
-                            <p className="font-serif italic text-lg leading-tight text-navy-900">"A masterpiece of emotional intelligence."</p>
+                            <Book className="w-5 h-5 mb-3 text-gold-500 opacity-60" />
+                            <p className="font-serif italic text-lg leading-tight text-navy-800">"A masterpiece of emotional intelligence."</p>
                         </motion.div>
                     </div>
 
@@ -68,9 +68,9 @@ export default function BookSection() {
                                 <span className="text-gold-500 font-bold tracking-widest uppercase text-xs">Best Seller</span>
                             </div>
 
-                            <h2 className="text-6xl md:text-7xl font-serif font-medium leading-[0.9] text-white">
+                            <h2 className="text-6xl md:text-7xl font-serif font-medium leading-[0.9] text-cream-50">
                                 Raise a Human, <br />
-                                <span className="italic text-white/70">Not a Tourist.</span>
+                                <span className="italic text-cream-200/50">Not a Tourist.</span>
                             </h2>
 
                             <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
@@ -89,10 +89,10 @@ export default function BookSection() {
                             </p>
 
                             <div className="flex flex-wrap gap-6 pt-8">
-                                <Button variant="white" href="#buy">
+                                <Button variant="outline" href="#buy" className="text-cream-50 border-cream-200/20 hover:bg-cream-200/5">
                                     Purchase Copy
                                 </Button>
-                                <button className="text-white hover:text-gold-500 transition-colors flex items-center gap-3 group uppercase tracking-widest text-xs font-bold">
+                                <button className="text-cream-200/60 hover:text-cream-50 transition-colors flex items-center gap-3 group uppercase tracking-widest text-xs font-bold">
                                     Read Chapter One
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                                 </button>

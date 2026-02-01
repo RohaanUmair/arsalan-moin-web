@@ -14,7 +14,7 @@ export default function SocialInfluence() {
     const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
     return (
-        <section ref={containerRef} className="min-h-screen py-20 flex items-center bg-white relative overflow-hidden">
+        <section ref={containerRef} className="min-h-screen py-20 flex items-center bg-cream-50 relative overflow-hidden">
             <div className="container-custom relative z-10">
 
                 <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
@@ -27,7 +27,7 @@ export default function SocialInfluence() {
                                 </div>
                                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-navy-900 mb-8 leading-[0.9] tracking-tight">
                                     1.6M+ <br />
-                                    <span className="text-4xl md:text-5xl lg:text-5xl italic font-light text-navy-400 block mt-2">Lives <br /> Impacted</span>
+                                    <span className="text-4xl md:text-5xl lg:text-5xl italic font-light text-navy-500/40 block mt-2">Lives <br /> Impacted</span>
                                 </h2>
                                 <p className="text-lg text-navy-700 mb-12 leading-relaxed max-w-sm">
                                     Arsalan's digital presence creates a safe space for millions to discuss mental health, parenting, and emotional well-being.
@@ -37,8 +37,8 @@ export default function SocialInfluence() {
                                     {['Instagram', 'Facebook', 'YouTube'].map((platform, i) => (
                                         <motion.div
                                             key={i}
-                                            whileHover={{ scale: 1.05, backgroundColor: "#0c4a6e", color: "#fff" }}
-                                            className="px-6 py-3 bg-white border border-navy-200 text-navy-900 text-sm font-bold rounded-full shadow-sm cursor-pointer transition-colors"
+                                            whileHover={{ scale: 1.05, backgroundColor: "#404040", color: "#fafaf9" }}
+                                            className="px-6 py-3 bg-cream-100 border border-navy-200 text-navy-800 text-sm font-bold rounded-none shadow-sm cursor-pointer transition-colors"
                                         >
                                             {platform}
                                         </motion.div>
@@ -54,8 +54,8 @@ export default function SocialInfluence() {
 
                             {/* Column 1 */}
                             <motion.div style={{ y }} className="flex flex-col gap-8 pt-0 md:pt-24">
-                                <div className="bg-navy-900 p-8 shadow-2xl shadow-navy-100 rounded-3xl text-white relative group overflow-hidden">
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500 rounded-full blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                                <div className="bg-navy-900 p-8 shadow-xl shadow-black/10 rounded-sm text-cream-50 relative group overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-navy-100 rounded-full blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity"></div>
                                     <div className="text-5xl font-serif text-gold-500 mb-6 opacity-50">"</div>
                                     <p className="text-xl font-medium mb-6 relative z-10">Your video on "Shadow Work" saved my marriage.</p>
                                     <div className="flex items-center gap-3">
@@ -78,15 +78,14 @@ export default function SocialInfluence() {
 
                             {/* Column 2 */}
                             <motion.div className="flex flex-col gap-8">
-                                <div className="bg-white rounded-3xl p-10 border border-navy-100 flex flex-col items-center justify-center text-center aspect-square shadow-xl shadow-navy-50/50 hover:shadow-2xl hover:shadow-navy-100/50 transition-shadow duration-500">
+                                <div className="bg-white rounded-sm p-10 border border-navy-100 flex flex-col items-center justify-center text-center aspect-square shadow-lg shadow-black/5 hover:shadow-xl transition-shadow duration-500">
                                     <span className="block text-6xl md:text-7xl font-bold text-navy-900 mb-2">500k</span>
-                                    <span className="text-sm text-navy-500 uppercase tracking-widest font-bold">Total Shares</span>
+                                    <span className="text-sm text-navy-400 uppercase tracking-widest font-bold">Total Shares</span>
                                 </div>
 
-                                <div className="bg-gold-400 p-8 rounded-3xl shadow-lg relative overflow-hidden group">
-                                    <p className="text-navy-900 font-serif italic text-lg mb-6 relative z-10">"Finally someone explained anxiety in a way my parents understand."</p>
-                                    <span className="text-xs font-bold text-navy-800 uppercase tracking-widest">- Sarah K.</span>
-                                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                                <div className="bg-navy-100 p-8 rounded-sm shadow-sm relative overflow-hidden group border border-navy-200">
+                                    <p className="text-navy-800 font-serif italic text-lg mb-6 relative z-10">"Finally someone explained anxiety in a way my parents understand."</p>
+                                    <span className="text-xs font-bold text-navy-500 uppercase tracking-widest">- Sarah K.</span>
                                 </div>
                             </motion.div>
 

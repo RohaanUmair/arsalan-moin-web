@@ -28,9 +28,9 @@ export default function Button({
     const baseClasses = "relative px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-block overflow-hidden group";
 
     const variants = {
-        primary: "bg-navy-900 text-white hover:shadow-2xl hover:shadow-navy-900/30",
-        secondary: "bg-transparent text-navy-900 border border-navy-200 hover:border-navy-900",
-        white: "bg-white text-navy-900 hover:shadow-xl hover:shadow-white/20"
+        primary: "bg-navy-800 text-cream-50 hover:bg-navy-900",
+        secondary: "bg-transparent text-navy-800 border border-navy-200 hover:border-navy-400",
+        white: "bg-cream-100 text-navy-800 hover:bg-cream-200"
     };
 
     const Component = href ? motion.a : motion.button;
@@ -49,7 +49,7 @@ export default function Button({
             <span className="relative z-10">{children}</span>
 
             {/* Fill Effect */}
-            <div className="absolute inset-0 bg-gold-400 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0" />
+            <div className="absolute inset-0 bg-navy-200 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0" />
         </Component>
     );
 }

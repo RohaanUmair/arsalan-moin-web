@@ -37,9 +37,9 @@ export default function Navbar() {
                     {/* Logo/Name */}
                     <Link href="/" className="group flex flex-col">
                         <span className={`text-2xl font-serif font-bold tracking-tighter ${scrolled ? "text-navy-900" : "text-navy-800"}`}>
-                            ARSALAN<span className="italic font-light text-navy-400 group-hover:text-gold-500 transition-colors">MOIN</span>
+                            ARSALAN<span className="italic font-light text-navy-400 group-hover:text-navy-600 transition-colors">MOIN</span>
                         </span>
-                        <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-gold-600 opacity-70 group-hover:opacity-100 transition-all">
+                        <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-navy-400 opacity-70 group-hover:opacity-100 transition-all">
                             Psychology & Healing
                         </span>
                     </Link>
@@ -50,20 +50,20 @@ export default function Navbar() {
                             <Link
                                 key={item.label}
                                 href={item.href}
-                                className="nav-link text-xs font-bold uppercase tracking-[0.2em] text-navy-600 hover:text-navy-900 transition-all relative overflow-hidden group"
+                                className="nav-link text-xs font-bold uppercase tracking-[0.2em] text-navy-500 hover:text-navy-900 transition-all relative overflow-hidden group"
                             >
                                 {item.label}
-                                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gold-400 transition-all duration-300 group-hover:w-full"></span>
+                                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-navy-400 transition-all duration-300 group-hover:w-full"></span>
                             </Link>
                         ))}
 
                         <Link
                             href="https://www.facebook.com/psychologicaltreatment"
                             target="_blank"
-                            className="flex items-center gap-2 bg-navy-900 text-white px-6 py-3 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-navy-700 transition-all shadow-xl shadow-navy-100 group"
+                            className="flex items-center gap-2 bg-navy-800 text-cream-50 px-6 py-3 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-navy-900 transition-all group"
                         >
                             Connect
-                            <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform opacity-60" />
                         </Link>
                     </div>
 
@@ -94,7 +94,7 @@ export default function Navbar() {
                                     key={item.label}
                                     href={item.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-2xl font-serif font-medium text-navy-900 hover:text-gold-600 transition-colors"
+                                    className="text-2xl font-serif font-medium text-navy-800 hover:text-navy-400 transition-colors"
                                 >
                                     {item.label}
                                 </Link>

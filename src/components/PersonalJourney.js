@@ -28,7 +28,7 @@ export default function PersonalJourney() {
     ];
 
     return (
-        <section ref={containerRef} className="py-32 bg-navy-950 text-white relative overflow-visible">
+        <section ref={containerRef} className="py-32 bg-navy-900 text-cream-50 relative overflow-visible">
             <div className="container-custom relative z-10">
 
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
@@ -53,7 +53,7 @@ export default function PersonalJourney() {
                         {/* Animated Timeline Line */}
                         <motion.div
                             style={{ scaleY }}
-                            className="absolute top-0 left-[-1px] w-[2px] h-full bg-gradient-to-b from-gold-400 via-gold-500 to-transparent origin-top z-10"
+                            className="absolute top-0 left-[-1px] w-[2px] h-full bg-navy-300 origin-top z-10"
                         ></motion.div>
 
                         <div className="flex flex-col gap-32">
@@ -68,18 +68,18 @@ export default function PersonalJourney() {
                                 >
                                     {/* Circle Node - Activates on view */}
                                     <motion.div
-                                        initial={{ backgroundColor: "#0b1120", borderColor: "#ffffff33" }}
-                                        whileInView={{ backgroundColor: "#f59e0b", borderColor: "#f59e0b" }}
+                                        initial={{ backgroundColor: "#171717", borderColor: "#404040" }}
+                                        whileInView={{ backgroundColor: "#737373", borderColor: "#737373" }}
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ duration: 0.5, delay: i * 0.3 }}
-                                        className="absolute top-2 -left-[85px] lg:-left-[85px] w-3 h-3 border rounded-full z-20"
+                                        className="absolute top-2 -left-[85px] lg:-left-[85px] w-3 h-3 border rounded-none z-20"
                                     ></motion.div>
 
                                     <div className="absolute top-3 -left-[80px] lg:-left-[80px] w-20 h-[1px] bg-white/10 group-hover:bg-gold-500/50 transition-colors duration-500"></div>
 
-                                    <span className="text-xs font-bold text-gold-500 uppercase tracking-[0.3em] block mb-4">{step.year}</span>
-                                    <h3 className="text-4xl md:text-5xl font-serif font-medium text-white mb-6 group-hover:translate-x-4 transition-transform duration-500">{step.title}</h3>
-                                    <p className="text-lg text-white/60 font-light max-w-md group-hover:text-white transition-colors duration-500">{step.desc}</p>
+                                    <span className="text-xs font-bold text-navy-400 uppercase tracking-[0.3em] block mb-4">{step.year}</span>
+                                    <h3 className="text-4xl md:text-5xl font-serif font-medium text-cream-100 mb-6 group-hover:translate-x-4 transition-transform duration-500">{step.title}</h3>
+                                    <p className="text-lg text-navy-400 font-light max-w-md group-hover:text-cream-200 transition-colors duration-500">{step.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
