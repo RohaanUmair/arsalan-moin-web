@@ -68,8 +68,8 @@ export default function PersonalJourney() {
                                 >
                                     {/* Circle Node - Activates on view */}
                                     <motion.div
-                                        initial={{ backgroundColor: "#171717", borderColor: "#404040" }}
-                                        whileInView={{ backgroundColor: "#737373", borderColor: "#737373" }}
+                                        initial={{ backgroundColor: "#102a43", borderColor: "#243b53" }}
+                                        whileInView={{ backgroundColor: "#d4a84b", borderColor: "#d4a84b" }}
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ duration: 0.5, delay: i * 0.3 }}
                                         className="absolute top-2 -left-[85px] lg:-left-[85px] w-3 h-3 border rounded-none z-20"

@@ -37,7 +37,7 @@ export default function SocialInfluence() {
                                     {['Instagram', 'Facebook', 'YouTube'].map((platform, i) => (
                                         <motion.div
                                             key={i}
-                                            whileHover={{ scale: 1.05, backgroundColor: "#404040", color: "#fafaf9" }}
+                                            whileHover={{ scale: 1.05, backgroundColor: "#102a43", color: "#fffbf5" }}
                                             className="px-6 py-3 bg-cream-100 border border-navy-200 text-navy-800 text-sm font-bold rounded-none shadow-sm cursor-pointer transition-colors"
                                         >
                                             {platform}

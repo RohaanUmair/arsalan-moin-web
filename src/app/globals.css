@@ -1,33 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* Mature & Professional Palette - Low Contrast Neutrals */
-  --color-navy-50: #fcfcfc;
-  --color-navy-100: #f5f5f5;
-  --color-navy-200: #e5e5e5;
-  --color-navy-300: #d4d4d4;
-  --color-navy-400: #a3a3a3;
-  --color-navy-500: #737373;
-  --color-navy-600: #525252;
-  --color-navy-700: #404040;
-  --color-navy-800: #262626;
-  /* Charcoal */
-  --color-navy-900: #171717;
-  /* Dark Charcoal */
-  --color-navy-950: #0a0a0a;
+  /* Navy Blue Premium Palette */
+  --color-navy-50: #f0f4f8;
+  --color-navy-100: #d9e2ec;
+  --color-navy-200: #bcccdc;
+  --color-navy-300: #9fb3c8;
+  --color-navy-400: #829ab1;
+  --color-navy-500: #627d98;
+  --color-navy-600: #486581;
+  --color-navy-700: #334e68;
+  --color-navy-800: #243b53;
+  --color-navy-900: #102a43;
+  --color-navy-950: #0a1929;
 
-  /* Neutrals / Off-whites */
-  --color-cream-50: #fafaf9;
-  /* Warm Stone Off-white */
-  --color-cream-100: #f5f5f4;
-  --color-cream-200: #e7e5e4;
+  /* Warm Cream Off-whites */
+  --color-cream-50: #fffbf5;
+  --color-cream-100: #faf6f0;
+  --color-cream-200: #f0ebe3;
 
-  /* Muted Accents - Taupe / Bronze */
-  --color-gold-400: #a8a29e;
-  /* Stone / Taupe */
-  --color-gold-500: #78716c;
-  /* Warm Gray-Brown */
-  --color-gold-600: #57534e;
+  /* Rich Gold Accents */
+  --color-gold-400: #f6c667;
+  --color-gold-500: #d4a84b;
+  --color-gold-600: #b8922f;
 
   /* Typography */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
