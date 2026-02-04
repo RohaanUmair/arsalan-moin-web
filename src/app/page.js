@@ -11,6 +11,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 
 import Philosophy from '@/components/Philosophy';
+import CourseSection from '@/components/CourseSection';
 import Services from '@/components/Services';
 
 function LoadingScreen() {
@@ -44,6 +45,7 @@ export default function Home() {
                 <Hero />
                 <BookSection />
                 <Philosophy />
+                <CourseSection />
                 <SocialInfluence />
                 <PersonalJourney />
                 <Services />
