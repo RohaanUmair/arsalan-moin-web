@@ -17,8 +17,8 @@ export default function PersonalJourney() {
         restDelta: 0.001
     });
 
-    // Move the title block down as user scrolls through the section
-    const titleY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 100, 300, 400]);
+    // Move the title block down as user scrolls through the section - only for large screens
+    const titleY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 50, 150, 250]);
     const smoothTitleY = useSpring(titleY, { stiffness: 100, damping: 30 });
 
     const steps = [
@@ -28,19 +28,21 @@ export default function PersonalJourney() {
     ];
 
     return (
-        <section ref={containerRef} className="py-32 bg-navy-900 text-cream-50 relative overflow-visible">
+        <section ref={containerRef} className="py-20 lg:py-32 bg-navy-900 text-cream-50 relative overflow-visible px-4 md:px-0">
             <div className="container-custom relative z-10">
 
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
 
-                    {/* Title Block - Moves with scroll */}
+                    {/* Title Block - Moves with scroll only on desktop */}
                     <motion.div
-                        style={{ y: smoothTitleY }}
-                        className="lg:w-1/3"
+                        className="lg:w-1/3 mb-10 lg:mb-0"
+                        style={{
+                            y: typeof window !== 'undefined' && window.innerWidth >= 1024 ? smoothTitleY : 0
+                        }}
                     >
                         <FadeIn>
-                            <h2 className="text-5xl lg:text-7xl font-serif font-bold text-white leading-[0.9] mb-6 tracking-tighter">
-                                The <br /> Path.
+                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-cream-50 leading-[1.1] lg:leading-[0.9] mb-6 tracking-tighter">
+                                The Path.
                             </h2>
                             <p className="text-xl text-navy-200 leading-relaxed font-light max-w-sm">
                                 A timeline defined not by years, but by the depth of understanding acquired through silence.
@@ -49,7 +51,7 @@ export default function PersonalJourney() {
                     </motion.div>
 
                     {/* Vertical Timeline - Minimalist */}
-                    <div className="lg:w-2/3 pl-0 lg:pl-20 border-l border-white/10 relative">
+                    <div className="lg:w-2/3 pl-8 lg:pl-20 border-l border-white/5 relative">
                         {/* Animated Timeline Line */}
                         <motion.div
                             style={{ scaleY }}
@@ -72,10 +74,10 @@ export default function PersonalJourney() {
                                         whileInView={{ backgroundColor: "#d4a84b", borderColor: "#d4a84b" }}
                                         viewport={{ once: true, margin: "-50px" }}
                                         transition={{ duration: 0.5, delay: i * 0.3 }}
-                                        className="absolute top-2 -left-[85px] lg:-left-[85px] w-3 h-3 border rounded-none z-20"
+                                        className="absolute top-2 -left-[36px] lg:-left-[85px] w-3 h-3 border rounded-none z-20"
                                     ></motion.div>
 
-                                    <div className="absolute top-3 -left-[80px] lg:-left-[80px] w-20 h-[1px] bg-white/10 group-hover:bg-gold-500/50 transition-colors duration-500"></div>
+                                    <div className="absolute top-3 -left-[32px] lg:-left-[80px] w-8 lg:w-20 h-[1px] bg-white/10 group-hover:bg-gold-500/50 transition-colors duration-500"></div>
 
                                     <span className="text-xs font-bold text-navy-400 uppercase tracking-[0.3em] block mb-4">{step.year}</span>
                                     <h3 className="text-4xl md:text-5xl font-serif font-medium text-cream-100 mb-6 group-hover:translate-x-4 transition-transform duration-500">{step.title}</h3>
