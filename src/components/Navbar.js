@@ -28,7 +28,7 @@ export default function Navbar() {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? "py-4 glass-card border-b border-navy-100/50" : "py-8 bg-transparent"
+            className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? "py-4 bg-white/80 backdrop-blur-xl border-b border-navy-100/50 shadow-lg shadow-black/5" : "py-8 bg-transparent"
                 }`}
         >
             <div className="container-custom">
@@ -37,9 +37,9 @@ export default function Navbar() {
                     {/* Logo/Name */}
                     <Link href="/" className="group flex flex-col">
                         <span className={`text-2xl font-serif font-bold tracking-tighter ${scrolled ? "text-navy-900" : "text-cream-50"}`}>
-                            ARSALAN<span className={`italic font-light transition-colors ${scrolled ? "text-navy-400 group-hover:text-navy-600" : "text-cream-200 group-hover:text-white"}`}>MOIN</span>
+                            ARSALAN<span className={`italic font-light transition-colors ${scrolled ? "text-navy-600 group-hover:text-navy-900" : "text-cream-200 group-hover:text-white"}`}>MOIN</span>
                         </span>
-                        <span className={`text-[10px] font-bold tracking-[0.4em] uppercase transition-all ${scrolled ? "text-navy-400 opacity-70 group-hover:opacity-100" : "text-cream-100 opacity-80 group-hover:opacity-100"}`}>
+                        <span className={`text-[10px] font-bold tracking-[0.4em] uppercase transition-all ${scrolled ? "text-navy-800 pb-1 opacity-60 group-hover:opacity-100" : "text-cream-100 opacity-80 group-hover:opacity-100"}`}>
                             Psychology & Healing
                         </span>
                     </Link>
@@ -50,10 +50,10 @@ export default function Navbar() {
                             <Link
                                 key={item.label}
                                 href={item.href}
-                                className={`nav-link text-xs font-bold uppercase tracking-[0.2em] transition-all relative overflow-hidden group ${scrolled ? "text-navy-500 hover:text-navy-900" : "text-cream-100 hover:text-white"}`}
+                                className={`nav-link text-xs font-bold uppercase tracking-[0.2em] transition-all relative overflow-hidden group ${scrolled ? "text-navy-800 hover:text-navy-950" : "text-cream-100 hover:text-white"}`}
                             >
                                 {item.label}
-                                <span className={`absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-300 group-hover:w-full ${scrolled ? "bg-navy-400" : "bg-white"}`}></span>
+                                <span className={`absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-300 group-hover:w-full ${scrolled ? "bg-navy-800" : "bg-white"}`}></span>
                             </Link>
                         ))}
 
@@ -67,11 +67,10 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    {/* Mobile menu button */}
                     <div className="lg:hidden flex items-center">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-navy-900 focus:outline-none p-2"
+                            className={`focus:outline-none p-2 transition-colors ${scrolled || isOpen ? "text-navy-900" : "text-cream-50"}`}
                         >
                             {isOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
