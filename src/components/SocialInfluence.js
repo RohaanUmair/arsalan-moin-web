@@ -66,7 +66,7 @@ export default function SocialInfluence() {
 
                                 <div className="bg-gray-100 rounded-3xl overflow-hidden aspect-[4/5] relative group">
                                     <img
-                                        src="https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?w=400&h=500&fit=crop"
+                                        src="/images/stage.jpeg"
                                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">

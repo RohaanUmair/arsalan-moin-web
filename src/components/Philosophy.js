@@ -26,7 +26,7 @@ export default function Philosophy() {
 
                 <img
                     // Male figure in vast nature, contemplative, full body
-                    src="https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?q=80&w=1927&auto=format&fit=crop"
+                    src="/images/arsalan_moin-with-book.jpeg"
                     alt="Philosophy"
                     className="w-full h-full object-cover object-center grayscale-[0.5]"
                 />

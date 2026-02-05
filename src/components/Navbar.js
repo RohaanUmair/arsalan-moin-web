@@ -36,10 +36,10 @@ export default function Navbar() {
 
                     {/* Logo/Name */}
                     <Link href="/" className="group flex flex-col">
-                        <span className={`text-2xl font-serif font-bold tracking-tighter ${scrolled ? "text-navy-900" : "text-navy-800"}`}>
-                            ARSALAN<span className="italic font-light text-navy-400 group-hover:text-navy-600 transition-colors">MOIN</span>
+                        <span className={`text-2xl font-serif font-bold tracking-tighter ${scrolled ? "text-navy-900" : "text-cream-50"}`}>
+                            ARSALAN<span className={`italic font-light transition-colors ${scrolled ? "text-navy-400 group-hover:text-navy-600" : "text-cream-200 group-hover:text-white"}`}>MOIN</span>
                         </span>
-                        <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-navy-400 opacity-70 group-hover:opacity-100 transition-all">
+                        <span className={`text-[10px] font-bold tracking-[0.4em] uppercase transition-all ${scrolled ? "text-navy-400 opacity-70 group-hover:opacity-100" : "text-cream-100 opacity-80 group-hover:opacity-100"}`}>
                             Psychology & Healing
                         </span>
                     </Link>
@@ -50,17 +50,17 @@ export default function Navbar() {
                             <Link
                                 key={item.label}
                                 href={item.href}
-                                className="nav-link text-xs font-bold uppercase tracking-[0.2em] text-navy-500 hover:text-navy-900 transition-all relative overflow-hidden group"
+                                className={`nav-link text-xs font-bold uppercase tracking-[0.2em] transition-all relative overflow-hidden group ${scrolled ? "text-navy-500 hover:text-navy-900" : "text-cream-100 hover:text-white"}`}
                             >
                                 {item.label}
-                                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-navy-400 transition-all duration-300 group-hover:w-full"></span>
+                                <span className={`absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-300 group-hover:w-full ${scrolled ? "bg-navy-400" : "bg-white"}`}></span>
                             </Link>
                         ))}
 
                         <Link
                             href="https://www.facebook.com/psychologicaltreatment"
                             target="_blank"
-                            className="flex items-center gap-2 bg-navy-800 text-cream-50 px-6 py-3 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-navy-900 transition-all group"
+                            className={`flex items-center gap-2 px-6 py-3 rounded-none text-xs font-bold uppercase tracking-widest transition-all group ${scrolled ? "bg-navy-800 text-cream-50 hover:bg-navy-900" : "bg-cream-50 text-navy-900 hover:bg-white"}`}
                         >
                             Connect
                             <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform opacity-60" />

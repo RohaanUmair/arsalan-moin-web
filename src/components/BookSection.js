@@ -39,7 +39,7 @@ export default function BookSection() {
                             className="relative z-10 w-[300px] md:w-[450px] aspect-[2/3] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-navy-800 rounded-sm overflow-hidden border-r-4 border-white/5"
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=450&h=675&fit=crop"
+                                src="/images/book.jpeg"
                                 alt="The Invisible Work"
                                 className="w-full h-full object-cover"
                             />
