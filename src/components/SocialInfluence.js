@@ -1,9 +1,14 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import FadeIn from './ui/FadeIn';
 
+/**
+ * SocialInfluence - Client Component (complex parallax and hover animations)
+ * Uses next/image for optimization
+ */
 export default function SocialInfluence() {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -35,13 +40,14 @@ export default function SocialInfluence() {
 
                                 <div className="flex flex-wrap gap-3">
                                     {['Instagram', 'Facebook', 'YouTube'].map((platform, i) => (
-                                        <motion.div
+                                        <motion.a
                                             key={i}
+                                            href="#"
                                             whileHover={{ scale: 1.05, backgroundColor: "#102a43", color: "#fffbf5" }}
                                             className="px-6 py-3 bg-cream-100 border border-navy-200 text-navy-800 text-sm font-bold rounded-none shadow-sm cursor-pointer transition-colors"
                                         >
                                             {platform}
-                                        </motion.div>
+                                        </motion.a>
                                     ))}
                                 </div>
                             </FadeIn>
@@ -55,23 +61,26 @@ export default function SocialInfluence() {
                             {/* Column 1 */}
                             <motion.div style={{ y }} className="flex flex-col gap-8 pt-0 md:pt-24">
                                 <div className="bg-navy-900 p-8 shadow-xl shadow-black/10 rounded-sm text-cream-50 relative group overflow-hidden">
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-navy-100 rounded-full blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-navy-100 rounded-full blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity" />
                                     <div className="text-5xl font-serif text-gold-500 mb-6 opacity-50">"</div>
                                     <p className="text-xl font-medium mb-6 relative z-10">Your video on "Shadow Work" saved my marriage.</p>
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-white/10 rounded-full"></div>
+                                        <div className="w-10 h-10 bg-white/10 rounded-full" />
                                         <span className="text-xs text-white/60 font-bold uppercase tracking-widest">@TopFan123</span>
                                     </div>
                                 </div>
 
                                 <div className="bg-gray-100 rounded-3xl overflow-hidden aspect-[4/5] relative group">
-                                    <img
+                                    <Image
                                         src="/images/stage.jpeg"
-                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        alt="Arsalan Moin's viral content on The Art of Listening"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 350px"
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
                                         <span className="text-xs font-bold text-gold-400 uppercase tracking-widest mb-2">Viral</span>
-                                        <h4 className="font-serif text-2xl text-white">The Art of Listening</h4>
+                                        <h3 className="font-serif text-2xl text-white">The Art of Listening</h3>
                                     </div>
                                 </div>
                             </motion.div>

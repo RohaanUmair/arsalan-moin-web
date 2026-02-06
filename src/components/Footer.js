@@ -1,14 +1,13 @@
-'use client';
+import Link from 'next/link';
 
+/**
+ * Footer - Server Component
+ * SEO-critical links and contact info renders on server
+ */
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        /* 
-          Sticky Reveal Logic:
-          - The container provides the scroll space
-          - The inner div is fixed at the bottom to create the reveal effect
-        */
         <footer
             className="relative h-[70vh] md:h-[80vh] bg-navy-950"
             style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
@@ -25,22 +24,22 @@ export default function Footer() {
                         <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-navy-200">Let's Talk.</h2>
                         <div className="flex flex-col gap-2 text-navy-400 text-lg">
                             <a href="mailto:hello@arsalanmoin.com" className="hover:text-navy-200 transition-colors">hello@arsalanmoin.com</a>
-                            <a href="#" className="hover:text-navy-200 transition-colors">+1 (555) 000-0000</a>
+                            <a href="tel:+15550000000" className="hover:text-navy-200 transition-colors">+1 (555) 000-0000</a>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-12 text-left md:text-right w-full md:w-auto">
                         <div className="flex flex-col gap-4">
                             <span className="text-xs font-bold uppercase tracking-widest text-navy-500 mb-2">Socials</span>
-                            <a href="#" className="hover:text-navy-200 transition-colors text-sm md:text-base">Instagram</a>
-                            <a href="#" className="hover:text-navy-200 transition-colors text-sm md:text-base">Twitter</a>
-                            <a href="#" className="hover:text-navy-200 transition-colors text-sm md:text-base">YouTube</a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-navy-200 transition-colors text-sm md:text-base">Instagram</a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-navy-200 transition-colors text-sm md:text-base">Twitter</a>
+                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-navy-200 transition-colors text-sm md:text-base">YouTube</a>
                         </div>
                         <div className="flex flex-col gap-4">
                             <span className="text-xs font-bold uppercase tracking-widest text-navy-500 mb-2">Menu</span>
-                            <a href="#" className="hover:text-navy-200 transition-colors text-sm md:text-base">Home</a>
-                            <a href="#book" className="hover:text-navy-200 transition-colors text-sm md:text-base">The Book</a>
-                            <a href="#about" className="hover:text-navy-200 transition-colors text-sm md:text-base">About</a>
+                            <Link href="/" className="hover:text-navy-200 transition-colors text-sm md:text-base">Home</Link>
+                            <Link href="#book" className="hover:text-navy-200 transition-colors text-sm md:text-base">The Book</Link>
+                            <Link href="#about" className="hover:text-navy-200 transition-colors text-sm md:text-base">About</Link>
                         </div>
                     </div>
                 </div>

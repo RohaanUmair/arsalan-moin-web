@@ -1,9 +1,15 @@
 'use client';
 
+import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowUpRight, Play, BookOpen, Users } from 'lucide-react';
 
+/**
+ * CourseSection - Client Component (complex animations)
+ * Uses next/image and next/link for optimization
+ */
 export default function CourseSection() {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -11,7 +17,6 @@ export default function CourseSection() {
         offset: ["start end", "end start"]
     });
 
-    // Parallax and smooth transitions
     const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
     const smoothY = useSpring(y, { stiffness: 100, damping: 30 });
     const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1, 1.1]);
@@ -35,6 +40,12 @@ export default function CourseSection() {
             transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
         }
     };
+
+    const courseLinks = [
+        { label: "Deep Dive Curriculum", href: "#curriculum" },
+        { label: "Student Testimonials", href: "#testimonials" },
+        { label: "Join the Community", href: "#community" }
+    ];
 
     return (
         <section ref={containerRef} className="py-32 bg-navy-950 relative overflow-hidden">
@@ -84,18 +95,21 @@ export default function CourseSection() {
                             style={{ scale: imageScale }}
                             className="relative overflow-hidden aspect-[16/10] rounded-sm bg-navy-900 border border-white/5 shadow-2xl"
                         >
-                            <img
+                            <Image
                                 src="/images/stage.jpeg"
-                                alt="Conscious Parenting Course"
-                                className="w-full h-full object-cover grayscale-[0.3] transition-transform duration-[2s] group-hover:scale-105"
+                                alt="Conscious Parenting Course by Arsalan Moin - Transform your approach to raising children"
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 58vw"
+                                className="object-cover grayscale-[0.3] transition-transform duration-[2s] group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
 
                             {/* Play Button Overlay */}
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="absolute inset-0 m-auto w-20 h-20 rounded-full bg-gold-500 flex items-center justify-center text-navy-950 shadow-2xl backdrop-blur-sm"
+                                aria-label="Play course preview"
                             >
                                 <Play className="w-8 h-8 fill-current translate-x-1" />
                             </motion.button>
@@ -107,7 +121,7 @@ export default function CourseSection() {
                             className="absolute -bottom-12 -right-6 md:-right-12 p-8 bg-navy-900 border border-gold-500/20 rounded-sm shadow-2xl backdrop-blur-xl z-20 hidden md:block max-w-[280px]"
                         >
                             <BookOpen className="w-6 h-6 text-gold-500 mb-4" />
-                            <h4 className="text-cream-50 font-serif text-xl mb-2">Mastering Connection</h4>
+                            <h3 className="text-cream-50 font-serif text-xl mb-2">Mastering Connection</h3>
                             <p className="text-navy-300 text-xs leading-relaxed">A 6-week guided journey into the heart of emotional intelligence and generational healing.</p>
                             <div className="mt-6 flex items-center gap-3">
                                 <Users className="w-4 h-4 text-gold-500/50" />
@@ -150,12 +164,8 @@ export default function CourseSection() {
                                 variants={itemVariants}
                                 className="flex flex-col gap-2"
                             >
-                                {[
-                                    { label: "Deep Dive Curriculum", href: "#" },
-                                    { label: "Student Testimonials", href: "#" },
-                                    { label: "Join the Community", href: "#" }
-                                ].map((link, idx) => (
-                                    <a
+                                {courseLinks.map((link, idx) => (
+                                    <Link
                                         key={idx}
                                         href={link.href}
                                         className="group flex items-center justify-between border-b border-white/5 py-5 hover:border-gold-500/50 transition-all"
@@ -164,7 +174,7 @@ export default function CourseSection() {
                                             {link.label}
                                         </span>
                                         <ArrowUpRight className="w-4 h-4 text-navy-400 group-hover:text-gold-400 transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                                    </a>
+                                    </Link>
                                 ))}
                             </motion.div>
 

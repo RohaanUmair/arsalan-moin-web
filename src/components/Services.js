@@ -1,13 +1,17 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
+/**
+ * Services - Client Component (kept as client due to complex hover animations)
+ * Uses next/image for optimization
+ */
 export default function Services() {
     const containerRef = useRef(null);
 
-    // Parallax scroll effect
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"]
@@ -16,7 +20,6 @@ export default function Services() {
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
-    // Staggered animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -60,24 +63,21 @@ export default function Services() {
 
     return (
         <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-navy-900 group">
-
             {/* Full Screen Background Image with Parallax */}
             <motion.div
                 style={{ y, scale }}
                 className="absolute inset-0 z-0"
             >
-                <div className="absolute inset-0 bg-navy-900/20 z-10"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/30 to-transparent z-10"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-navy-900/60 via-transparent to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-navy-900/20 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/30 to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-navy-900/60 via-transparent to-transparent z-10" />
 
-                <motion.img
+                <Image
                     src="/images/stage.jpeg"
-                    alt="Start the Invisible Work"
-                    className="w-full h-full object-cover object-center grayscale-[0.4]"
-                    initial={{ scale: 1.1 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    whileHover={{ scale: 1.02 }}
+                    alt="Arsalan Moin speaking at an event - available for keynotes and workshops"
+                    fill
+                    sizes="100vw"
+                    className="object-cover object-center grayscale-[0.4]"
                 />
             </motion.div>
 
@@ -107,7 +107,7 @@ export default function Services() {
                 }}
             />
 
-            {/* Content Overlay - Floating Layout */}
+            {/* Content Overlay */}
             <motion.div
                 className="absolute bottom-0 left-0 w-full p-8 md:p-16 z-20 flex flex-col md:flex-row items-end justify-between gap-8"
                 variants={containerVariants}
@@ -115,7 +115,6 @@ export default function Services() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
             >
-
                 <motion.div
                     className="max-w-2xl relative z-10 backdrop-blur-md bg-navy-900/30 p-8 pr-10 rounded-sm border-l-2 border-gold-500"
                     variants={itemVariants}
@@ -183,7 +182,6 @@ export default function Services() {
                     </motion.button>
                 </motion.div>
             </motion.div>
-
         </section>
     );
 }
