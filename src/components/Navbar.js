@@ -18,10 +18,10 @@ export default function Navbar() {
     }, []);
 
     const navItems = [
-        { label: "About", href: "#about" },
-        { label: "Book", href: "#book" },
-        { label: "Socials", href: "#social" },
-        { label: "Journey", href: "#journey" },
+        { label: "Home", href: "/" },
+        { label: "Book", href: "/book" },
+        { label: "Course", href: "/course" },
+        { label: "Socials", href: "/#social" },
     ];
 
     return (

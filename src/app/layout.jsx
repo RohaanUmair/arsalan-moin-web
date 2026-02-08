@@ -1,4 +1,6 @@
 import { Inter, Outfit, Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -82,9 +84,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${outfit.variable} ${plusJakarta.variable} antialiased text-slate-900 bg-white selection:bg-gold-400 selection:text-navy-900`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
 }
+
 
