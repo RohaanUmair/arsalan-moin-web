@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Star, BookOpen, User } from 'lucide-react';
 import BookPageHero from '@/components/BookPageHero';
-
+import PurchaseButton from '@/components/payments/PurchaseButton';
 import FadeIn from '@/components/ui/FadeIn';
 
 export const metadata = {
@@ -54,13 +54,11 @@ export default function BookPage() {
                             </p>
 
                             <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
-                                <Link
-                                    href="https://docs.google.com/forms/d/e/1FAIpQLSd7M-tM4_4yQ4yQ4yQ4/viewform"
-                                    target="_blank"
-                                    className="bg-gold-500 text-navy-950 px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300"
+                                <PurchaseButton
+                                    className="bg-gold-500 text-navy-950 px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300 cursor-pointer"
                                 >
                                     Purchase Copy
-                                </Link>
+                                </PurchaseButton>
                                 <Link
                                     href="#read-chapter"
                                     className="px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-widest hover:bg-white/5 transition-colors duration-300 flex items-center gap-3 group"
@@ -196,13 +194,11 @@ export default function BookPage() {
                             Start Your Journey <br /> <span className="italic text-navy-600">Today.</span>
                         </h2>
                         <div className="flex justify-center">
-                            <Link
-                                href="https://docs.google.com/forms/d/e/1FAIpQLSd7M-tM4_4yQ4yQ4yQ4/viewform"
-                                target="_blank"
-                                className="bg-navy-900 text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:bg-navy-800 transition-all hover:scale-105 shadow-xl shadow-navy-900/10"
+                            <PurchaseButton
+                                className="bg-navy-900 text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:bg-navy-800 transition-all hover:scale-105 shadow-xl shadow-navy-900/10 cursor-pointer"
                             >
                                 Get Your Copy Now
-                            </Link>
+                            </PurchaseButton>
                         </div>
                     </FadeIn>
                 </div>
