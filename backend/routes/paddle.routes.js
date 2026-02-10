@@ -1,9 +1,9 @@
-import express from "express";
-import { handlePaddleWebhook } from "../controllers/paddle.controller.js";
+import express from 'express';
+import { handlePaddleWebhook } from '../controllers/paddle.controller.js';
 
 const router = express.Router();
 
 // Paddle webhook endpoint
-router.post("/webhook", handlePaddleWebhook);
+router.post('/webhooks', handlePaddleWebhook);
 
 export default router;

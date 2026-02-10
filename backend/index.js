@@ -3,6 +3,8 @@ import express from "express"
 import cors from 'cors';
 import connectDB from "./db/index.js"
 import dotenv from "dotenv"
+import paddleRoutes from "./routes/paddle.routes.js"
+import authRoutes from "./routes/auth.routes.js"
 dotenv.config()
 
 
@@ -18,13 +20,30 @@ const allowedOrigins = [
 
 
 
-app.use(cookieParser());
-app.use(express.json())
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 
+// CORS must be before routes
 app.use(cors({
-  origin: true,
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true,
 }));
+
+// Middleware to capture raw body for signature verification
+app.use(express.json({
+  verify: (req, res, buf) => {
+    if (req.originalUrl.startsWith('/paddle/webhooks')) {
+      req.rawBody = buf;
+    }
+  }
+}));
+
+app.use(cookieParser());
+
+// Routes
+app.use('/paddle', paddleRoutes);
+app.use('/api/auth', authRoutes);
 
 
 
