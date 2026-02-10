@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 export default function PurchaseButton({
     children = "Purchase Copy",
     className = "",
-    priceId = "pri_01kgypxwte44xafwh5x0c6152k"
+    priceId = "pri_01kgypxwte44xafwh5x0c6152k",
+    userEmail = "",
 }) {
     const [paddle, setPaddle] = useState();
 
@@ -20,14 +21,22 @@ export default function PurchaseButton({
     const handleCheckout = () => {
         if (!paddle) return alert("Paddle not initialized");
 
-        paddle.Checkout.open({
+        const checkoutConfig = {
             items: [{ priceId, quantity: 1 }],
             settings: {
                 displayMode: "overlay",
                 theme: "dark",
                 successUrl: `${window.location.origin}/success`,
             },
-        });
+        };
+
+        // Pass user email so the webhook can identify the user
+        if (userEmail) {
+            checkoutConfig.customer = { email: userEmail };
+            checkoutConfig.customData = { userEmail };
+        }
+
+        paddle.Checkout.open(checkoutConfig);
     };
 
     return (

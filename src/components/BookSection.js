@@ -1,83 +1,97 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import BookSectionClient from './BookSectionClient';
-import { ArrowRight } from 'lucide-react';
+"use client";
 
-/**
- * BookSection - Server Component
- * SEO-critical content (h2, description, stats) renders on server
- * Animations handled by BookSectionClient wrapper
- */
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Star, Headphones, BookOpen } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+
 export default function BookSection() {
     return (
-        <BookSectionClient>
+        <section id="book" className="py-24 bg-navy-900 text-white overflow-hidden relative">
+            {/* Background Elements */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-navy-600/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
+            </div>
+
             <div className="container-custom relative z-10">
-                <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                    {/* Visual Side */}
+                    <div className="w-full lg:w-1/2 flex justify-center">
+                        <div className="relative w-full max-w-[400px] aspect-[4/5] sm:aspect-square flex items-center justify-center">
+                            {/* Main Book Image */}
+                            <div className="absolute top-0 left-0 w-[70%] z-20 transform -rotate-6 transition-transform hover:rotate-0 duration-500 shadow-2xl shadow-black/50 overflow-hidden rounded-sm bg-navy-800">
+                                <Image
+                                    src="/images/book.jpeg"
+                                    alt="The Invisible Work Book Cover"
+                                    width={400}
+                                    height={600}
+                                    className="w-full h-auto object-cover"
+                                    priority
+                                />
+                            </div>
 
-                    {/* Book Image with 3D effect wrapper */}
-                    <div className="w-full lg:w-1/2 flex justify-center perspective-1000 relative">
-                        {/* Static Subtle Shadow */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-black/5 blur-[60px] rounded-full pointer-events-none" />
-
-                        <div className="relative z-10 w-[280px] md:w-[400px] aspect-[2/3] shadow-2xl bg-navy-800 rounded-sm overflow-hidden border-r-2 border-white/5">
-                            <Image
-                                src="/images/book.jpeg"
-                                alt="The Invisible Work by Arsalan Moin - A guide to emotional parenting"
-                                fill
-                                priority
-                                sizes="(max-width: 768px) 280px, 400px"
-                                className="object-cover"
-                            />
-                            {/* Reflection */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 z-20 pointer-events-none mix-blend-overlay" />
+                            {/* Audiobook Image */}
+                            <div className="absolute bottom-10 -right-30 w-[70%] z-10 transform rotate-6 transition-transform hover:rotate-0 duration-500 shadow-2xl shadow-black/50 overflow-hidden rounded-lg bg-navy-800">
+                                <Image
+                                    src="/images/audio-book.png"
+                                    alt="The Invisible Work Audiobook"
+                                    width={400}
+                                    height={400}
+                                    className="w-full h-auto object-cover"
+                                    priority
+                                />
+                            </div>
                         </div>
                     </div>
 
-                    {/* SEO-critical Editorial Content */}
+
+                    {/* Content Side */}
                     <div className="w-full lg:w-1/2">
-                        <div className="space-y-8">
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-[1px] bg-gold-500" />
-                                <span className="text-gold-500 font-bold tracking-widest uppercase text-xs">Best Seller</span>
-                            </div>
-
-                            <h2 className="text-5xl md:text-6xl font-serif font-medium leading-[0.95] text-cream-50">
-                                Raise a Human, <br />
-                                <span className="italic text-cream-200/50">Not a Tourist.</span>
+                        <FadeIn direction="left">
+                            <h2 className="text-sm font-bold text-gold-500 tracking-widest uppercase mb-4">
+                                Now Available
                             </h2>
+                            <h3 className="text-5xl md:text-6xl font-serif font-medium leading-[0.9] text-white mb-8">
+                                The Invisible <br />
+                                <span className="italic text-gold-200">Work</span>
+                            </h3>
 
-                            <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-6">
-                                <div>
-                                    <h3 className="text-xl font-bold text-white mb-1">39+</h3>
-                                    <p className="text-white/50 text-xs uppercase tracking-wider">Pages of insight</p>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-white mb-1">4.9/5</h3>
-                                    <p className="text-white/50 text-xs uppercase tracking-wider">Reader Rating</p>
-                                </div>
-                            </div>
-
-                            <p className="text-lg text-white/80 font-light leading-relaxed max-w-md">
-                                Most parenting advice focuses on the visible behaviors. This book reveals the <span className="text-white font-medium border-b border-gold-500">invisible emotional architecture</span> that determines your child's future.
+                            <p className="text-xl text-navy-100 font-light leading-relaxed mb-8 max-w-lg">
+                                Stop raising a tourist. Start raising a citizen. Get the complete guide to conscious parenting.
                             </p>
 
-                            <div className="flex flex-wrap gap-6 pt-4">
-                                <Link
-                                    href="#buy"
-                                    className="px-6 py-3 border border-cream-200/20 text-cream-50 font-bold uppercase tracking-widest text-xs hover:bg-cream-200/5 transition-colors"
-                                >
-                                    Purchase Copy
-                                </Link>
-                                <button className="text-cream-200/60 hover:text-cream-50 transition-colors flex items-center gap-3 group uppercase tracking-widest text-xs font-bold">
-                                    Read Chapter One
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                                </button>
+                            <div className="flex flex-col gap-4 mb-10 text-navy-200">
+                                <div className="flex items-center gap-3 text-left">
+                                    <BookOpen className="text-gold-500 w-5 h-5 flex-shrink-0" />
+                                    <span className="text-lg leading-tight">Full Ebook (PDF)</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-left">
+                                    <Headphones className="text-gold-500 w-5 h-5 flex-shrink-0" />
+                                    <span className="text-lg leading-tight">Audiobook (Narrated solely by Arsalan)</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <Link
+                                    href="/book"
+                                    className="bg-gold-500 text-navy-950 px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 text-center flex items-center justify-center gap-2 group"
+                                >
+                                    Get the Bundle
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                                <Link
+                                    href="/book#read-chapter"
+                                    className="px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-widest hover:bg-white/5 transition-colors duration-300 flex items-center justify-center gap-2"
+                                >
+                                    Read Preview
+                                </Link>
+                            </div>
+
+                        </FadeIn>
+                    </div>
                 </div>
             </div>
-        </BookSectionClient>
+        </section>
     );
 }

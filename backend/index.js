@@ -5,6 +5,7 @@ import connectDB from "./db/index.js"
 import dotenv from "dotenv"
 import paddleRoutes from "./routes/paddle.routes.js"
 import authRoutes from "./routes/auth.routes.js"
+import downloadRoutes from "./routes/download.routes.js"
 dotenv.config()
 
 
@@ -44,6 +45,7 @@ app.use(cookieParser());
 // Routes
 app.use('/paddle', paddleRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/downloads', downloadRoutes);
 
 
 
